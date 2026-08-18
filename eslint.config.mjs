@@ -1,10 +1,10 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**'] },
-  ...tseslint.configs.recommendedTypeChecked,
+  { ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**', 'eslint.config.mjs'] },
   {
     files: ['**/*.ts', '**/*.tsx'],
+    ...tseslint.configs.recommendedTypeChecked,
     languageOptions: {
       parserOptions: {
         projectService: true,
