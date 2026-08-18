@@ -1,0 +1,2 @@
+export interface DomainEvent<T=unknown>{id:string;type:string;organizationId:string;occurredAt:string;payload:T;}
+export class EventBus{private handlers=new Map<string,((e:DomainEvent)=>Promise<void>)[]>();on(type:string,h:(e:DomainEvent)=>Promise<void>):void{this.handlers.set(type,[...(this.handlers.get(type)??[]),h]);}async publish(e:DomainEvent):Promise<void>{for(const h of this.handlers.get(e.type)??[])await h(e);}}
