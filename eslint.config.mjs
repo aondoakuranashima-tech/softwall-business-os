@@ -1,9 +1,7 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  {
-    ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**', 'eslint.config.mjs'],
-  },
+  { ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**', 'eslint.config.mjs', 'vitest.config.ts'] },
   {
     files: ['**/*.ts', '**/*.tsx'],
     extends: [tseslint.configs.recommendedTypeChecked],
