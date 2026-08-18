@@ -1,0 +1,2 @@
+import type { AiProvider, AiRequest, AiResponse } from './core';
+export class AiModelGateway { private readonly providers = new Map<string, AiProvider>(); register(model: string, provider: AiProvider): void { this.providers.set(model, provider); } async generate(request: AiRequest): Promise<AiResponse> { const provider = this.providers.get(request.model); if (!provider) throw new Error(`AI_MODEL_NOT_CONFIGURED:${request.model}`); return provider.generate(request); } }
