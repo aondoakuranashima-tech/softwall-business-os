@@ -1,4 +1,4 @@
-export interface IdempotencyStore { get(key: string): Promise<unknown | undefined>; set(key: string, value: unknown, ttlSeconds: number): Promise<void>; }
+export interface IdempotencyStore { get(key: string): Promise<unknown>; set(key: string, value: unknown, ttlSeconds: number): Promise<void>; }
 
 export async function withIdempotency<T>(store: IdempotencyStore, key: string, operation: () => Promise<T>, ttlSeconds = 86400): Promise<T> {
   const existing = await store.get(key);
