@@ -1,0 +1,2 @@
+export interface SearchDocument { id:string; text:string; }
+export function searchDocuments(documents:SearchDocument[],query:string,limit=10):SearchDocument[] { const terms=query.toLowerCase().split(/\s+/).filter(Boolean); return documents.map(d=>({d,score:terms.reduce((n,t)=>n+(d.text.toLowerCase().includes(t)?1:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.d); }
