@@ -20,12 +20,15 @@ export function loadConfig(): SoftwallConfig {
   if (!['development', 'test', 'staging', 'production'].includes(environment)) {
     throw new Error(`Invalid NODE_ENV: ${environment}`);
   }
-  return {
+  const config: SoftwallConfig = {
     environment,
     appName: required('SOFTWALL_APP_NAME'),
     apiBaseUrl: required('SOFTWALL_API_BASE_URL'),
     logLevel: process.env.LOG_LEVEL ?? (environment === 'production' ? 'info' : 'debug'),
-    databaseUrl: process.env.DATABASE_URL,
-    redisUrl: process.env.REDIS_URL,
   };
+  const databaseUrl = process.env.DATABASE_URL;
+  const redisUrl = process.env.REDIS_URL;
+  if (databaseUrl !== undefined) config.databaseUrl = databaseUrl;
+  if (redisUrl !== undefined) config.redisUrl = redisUrl;
+  return config;
 }
