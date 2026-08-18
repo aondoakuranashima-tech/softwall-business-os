@@ -1,10 +1,12 @@
 import tseslint from 'typescript-eslint';
 
-export default [
-  { ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**', 'eslint.config.mjs'] },
+export default tseslint.config(
+  {
+    ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**', 'eslint.config.mjs'],
+  },
   {
     files: ['**/*.ts', '**/*.tsx'],
-    ...tseslint.configs.recommendedTypeChecked,
+    extends: [tseslint.configs.recommendedTypeChecked],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -18,4 +20,4 @@ export default [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
-];
+);
