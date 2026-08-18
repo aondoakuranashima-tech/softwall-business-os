@@ -1,6 +1,6 @@
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+export default [
   { ignores: ['node_modules/**', 'dist/**', 'build/**', '.next/**', 'coverage/**', 'eslint.config.mjs'] },
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -18,4 +18,4 @@ export default tseslint.config(
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
-);
+];
