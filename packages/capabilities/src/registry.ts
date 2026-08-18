@@ -10,7 +10,7 @@ for (const [domain, ids] of Object.entries(capabilityDomains)) {
 export const capabilityRegistry: CapabilityRecord[] = capabilityCatalog.map((id) => ({
   id,
   domain: domainByCapability.get(id) ?? 'unassigned',
-  state: 'planned' as CapabilityState,
+  state: 'planned',
 }));
 
 export function getCapability(id: CapabilityId): CapabilityRecord | undefined {
