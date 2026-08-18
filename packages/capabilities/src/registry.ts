@@ -2,14 +2,14 @@ import { capabilityCatalog, type CapabilityId } from './index';
 import { capabilityDomains } from './domains';
 import type { CapabilityState, CapabilityRecord } from './lifecycle';
 
-const domainByCapability = new Map<string, string>();
+const domainByCapability = new Map<CapabilityId, string>();
 for (const [domain, ids] of Object.entries(capabilityDomains)) {
-  for (const id of ids) domainByCapability.set(id, domain);
+  for (const id of ids as CapabilityId[]) domainByCapability.set(id, domain);
 }
 
 export const capabilityRegistry: CapabilityRecord[] = capabilityCatalog.map((id) => ({
-  id,
-  domain: domainByCapability.get(id) ?? 'unassigned',
+  id: id as CapabilityId,
+  domain: domainByCapability.get(id as CapabilityId) ?? 'unassigned',
   state: 'planned' as CapabilityState,
 }));
 
