@@ -1,0 +1,1 @@
+export class MemoryCache{private values=new Map<string,{value:unknown;expires:number}>();set(key:string,value:unknown,ttlMs:number):void{this.values.set(key,{value,expires:Date.now()+ttlMs})}get<T>(key:string):T|undefined{const v=this.values.get(key);if(!v||v.expires<=Date.now()){this.values.delete(key);return undefined}return v.value as T}}
