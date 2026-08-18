@@ -1,0 +1,2 @@
+export interface AgentPermission{agentId:string;action:string;resource:string;effect:'allow'|'deny'}
+export function permitted(rules:AgentPermission[],agentId:string,action:string,resource:string):boolean{const matches=rules.filter(r=>r.agentId===agentId&&r.action===action&&(r.resource===resource||r.resource==='*'));const deny=matches.some(r=>r.effect==='deny');return!deny&&matches.some(r=>r.effect==='allow');}
