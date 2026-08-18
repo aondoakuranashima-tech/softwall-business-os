@@ -1,0 +1,2 @@
+export interface AiTool { name: string; description: string; execute: (input: unknown) => Promise<unknown>; enabled: boolean; }
+export class AiToolRegistry { private readonly tools = new Map<string, AiTool>(); register(tool: AiTool): void { this.tools.set(tool.name, tool); } get(name: string): AiTool { const tool = this.tools.get(name); if (!tool || !tool.enabled) throw new Error(`AI_TOOL_UNAVAILABLE:${name}`); return tool; } }
