@@ -1,0 +1,9 @@
+{
+  "name": "@softwall/config",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Canonical environment and application configuration contract for Softwall.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" }
+}
