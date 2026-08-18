@@ -1,0 +1,1 @@
+export function invoiceNumber(sequence:number,prefix='SW'):string{if(sequence<1)throw new Error('INVALID_SEQUENCE');return `${prefix}-${new Date().getUTCFullYear()}-${String(sequence).padStart(8,'0')}`;}
