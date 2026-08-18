@@ -1,0 +1,2 @@
+export interface ApprovalRequest { id:string; organizationId:string; requesterId:string; action:string; status:'pending'|'approved'|'rejected'; }
+export function approve(request:ApprovalRequest,actorId:string):ApprovalRequest { if(!actorId||actorId===request.requesterId) throw new Error('INVALID_APPROVER'); if(request.status!=='pending') throw new Error('APPROVAL_CLOSED'); return {...request,status:'approved'}; }
